@@ -38,7 +38,11 @@
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
-                        <x-dropdown-link :href="route('dashboard')">
+                        <x-dropdown-link :href="route('tasks')">
+                            {{ __('View Tasks') }}
+                        </x-dropdown-link>
+
+                        <x-dropdown-link :href="route('report')">
                             {{ __('Report An Issue') }}
                         </x-dropdown-link>
 
