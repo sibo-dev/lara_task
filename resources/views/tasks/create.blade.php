@@ -6,6 +6,8 @@
     </x-slot>
     
     <div class="flex flex-col items-center justify-center">
+        <form action="{{ route('tasks.save') }}" method="post">
+            @csrf
         <div class="form-group">
             <label for="title">Title</label>
             <br>
@@ -18,11 +20,18 @@
             <textarea name="description" id="description" class="form-control"></textarea>
         </div>
         <div>
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
                 {{ __("Create Task")}}
             </button>
-            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                {{ __("Cancel")}}
+        </form>
+        </div>
+        <br>
+        <div>
+            <a href="{{ route('tasks') }}">
+                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                    {{ __("Cancel")}}
+                </button>
+            </a>
         </div>
     </div>
 </x-app-layout>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TasksController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,13 +32,18 @@ Route::middleware('auth')->group(function () {
         return view('report');
     })->name('report');
 
+    /*
+    Define the routes for the Tasks and the TasksController
+    */
     Route::get('tasks', function () {
         return view('tasks');
     })->name('tasks');
-
+    // Route::get('tasks/create', 'TasksController@create')->name('tasks.create');
+    Route::post('tasks', [TasksController::class, 'save'])->name('tasks.save');
     Route::get('tasks/create', function () {
         return view('tasks.create');
     })->name('tasks.create');
+
 });
 
 require __DIR__.'/auth.php';
