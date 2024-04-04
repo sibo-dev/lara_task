@@ -12,9 +12,11 @@
                     {{ __("You're logged in as") }} {{ Auth::user()->name }}
                 </div>
                 <div>
+                <a href="{{ route('tasks') }}">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
                         {{ __("View Your Tasks") }}
                     </button>
+                </a>
                 </div>
             </div>
         </div>

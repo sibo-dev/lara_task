@@ -10,9 +10,8 @@ class TasksController extends Controller
     public function index()
     {
         // Fetch all tasks from the database for a user
-        $tasks = Task::all();
-        // $tasks = Task::where('user_id', auth()->id())->get();
-        return view('tasks', ['tasks' => $tasks,]);
+        $tasks = Task::where('user_id', auth()->id())->orderBy('updated_at', 'desc')->get();
+        return view('tasks', compact('tasks'));
     }
 
     public function create()
@@ -28,6 +27,26 @@ class TasksController extends Controller
             'description' => request('description'),
             'user_id' => auth()->id()
         ]);
+        return redirect()->route('tasks');
+    }
+
+    public function complete($id)
+    {
+        // Update the task as completed
+        $task = Task::find($id);
+        $task->completed = request('completed');
+        $task->completed_at = now();
+        $task->save();
+        return redirect()->route('tasks');
+    }
+
+    public function reopen($id)
+    {
+        // Update the task as not completed
+        $task = Task::find($id);
+        $task->completed = false;
+        $task->completed_at = null;
+        $task->save();
         return redirect()->route('tasks');
     }
 }

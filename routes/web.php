@@ -35,14 +35,13 @@ Route::middleware('auth')->group(function () {
     /*
     Define the routes for the Tasks and the TasksController
     */
-    Route::get('tasks', function () {
-        return view('tasks');
-    })->name('tasks');
-    // Route::get('tasks/create', 'TasksController@create')->name('tasks.create');
+    Route::get('tasks', [TasksController::class, 'index'])->name('tasks');
     Route::post('tasks', [TasksController::class, 'save'])->name('tasks.save');
     Route::get('tasks/create', function () {
         return view('tasks.create');
     })->name('tasks.create');
+    Route::patch('tasks/{id}', [TasksController::class, 'complete'])->name('tasks.complete');
+    Route::patch('tasks/{id}/reopen', [TasksController::class, 'reopen'])->name('tasks.reopen');
 
 });
 
