@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/dashboard', function () {
@@ -34,6 +34,10 @@ Route::middleware('auth')->group(function () {
     Route::get('tasks', function () {
         return view('tasks');
     })->name('tasks');
+
+    Route::get('tasks/create', function () {
+        return view('tasks.create');
+    })->name('tasks.create');
 });
 
 require __DIR__.'/auth.php';
