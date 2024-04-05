@@ -38,6 +38,14 @@
                     <button input="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
                         {{ __("Complete") }}
                     </button>
+                </form>
+                <form action="{{ route('tasks.delete', $task->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button input="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded">
+                        {{ __("Delete") }}
+                    </button>
+                </form>
             </div>
             @endif
             @endforeach
@@ -60,13 +68,21 @@
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $task->title }}</h5>
                 </a>
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $task->description }}</p>
-                <form action="{{ route('tasks.complete', $task->id) }}" method="POST">
+                <form action="{{ route('tasks.reopen', $task->id) }}" method="POST">
                     @csrf
                     @method('PATCH')
                     <input type="hidden" name="completed" value="1">
                     <button input="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
                         {{ __("Reopen") }}
                     </button>
+                </form>
+                <form action="{{ route('tasks.delete', $task->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button input="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded">
+                        {{ __("Delete") }}
+                    </button>
+                </form>
             </div>
             @endif
             @endforeach

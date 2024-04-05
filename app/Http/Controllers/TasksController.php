@@ -33,8 +33,8 @@ class TasksController extends Controller
     public function complete($id)
     {
         // Update the task as completed
-        $task = Task::find($id);
-        $task->completed = request('completed');
+        $task = Task::where('id', $id)->first();
+        $task->completed = true;
         $task->completed_at = now();
         $task->save();
         return redirect()->route('tasks');
@@ -43,10 +43,18 @@ class TasksController extends Controller
     public function reopen($id)
     {
         // Update the task as not completed
-        $task = Task::find($id);
+        $task = Task::where('id', $id)->first();
         $task->completed = false;
         $task->completed_at = null;
         $task->save();
+        return redirect()->route('tasks');
+    }
+
+    public function delete($id)
+    {
+        // Delete the task from the database
+        $task = Task::where('id', $id)->first();
+        $task->delete();
         return redirect()->route('tasks');
     }
 }

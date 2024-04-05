@@ -42,7 +42,7 @@ Route::middleware('auth')->group(function () {
     })->name('tasks.create');
     Route::patch('tasks/{id}', [TasksController::class, 'complete'])->name('tasks.complete');
     Route::patch('tasks/{id}/reopen', [TasksController::class, 'reopen'])->name('tasks.reopen');
-
+    Route::delete('tasks/{id}', [TasksController::class, 'delete'])->name('tasks.delete');
 });
 
 require __DIR__.'/auth.php';
