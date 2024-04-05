@@ -14,10 +14,10 @@ This is a simple to-do app built with Laravel. It allows users to create, view, 
 
 ## Design Objectives
 
-- [ ] User registration
-- [ ] User authentication
-- [ ] List the user’s todo tasks
+- [X] User registration
+- [X] User authentication
+- [X] List the user’s todo tasks
 - [ ] View a todo task
-- [ ] Create a todo task
+- [X] Create a todo task
 - [ ] Edit a todo task
-- [ ] Delete a todo task
+- [X] Delete a todo task

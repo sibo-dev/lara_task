@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TasksController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Task;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/dashboard', function () {
@@ -31,9 +33,25 @@ Route::middleware('auth')->group(function () {
         return view('report');
     })->name('report');
 
-    Route::get('tasks', function () {
-        return view('tasks');
-    })->name('tasks');
+    /*
+    Define the routes for the Tasks and the TasksController
+    */
+    Route::get('tasks', [TasksController::class, 'index'])->name('tasks');
+    Route::post('tasks', [TasksController::class, 'save'])->name('tasks.save');
+    Route::get('tasks/create', function () {
+        return view('tasks.create');
+    })->name('tasks.create');
+    Route::patch('tasks/{id}', [TasksController::class, 'complete'])->name('tasks.complete');
+    Route::patch('tasks/{id}/reopen', [TasksController::class, 'reopen'])->name('tasks.reopen');
+    Route::delete('tasks/{id}', [TasksController::class, 'delete'])->name('tasks.delete');
+    Route::get('tasks/{id}', function ($id) {
+        $task = Task::where('id', $id)->first();
+        return view('tasks.view', compact('task'));
+    })->name('tasks.view');
+    Route::patch('tasks/{id}/edit', function ($id) {
+        $task = Task::where('id', $id)->first();
+        return view('tasks.edit', compact('task'));
+    })->name('tasks.edit');
 });
 
 require __DIR__.'/auth.php';

@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
+use Illuminate\Foundation\Testing\Concerns\MakesHttpRequests;
 
 class WebTest extends TestCase
 {
@@ -14,6 +15,6 @@ class WebTest extends TestCase
     {
         $response = $this->get('/');
         $response->assertStatus(200);
-        $response->assertViewIs('welcome');
+        $response->assertViewIs('index');
     }
 }
