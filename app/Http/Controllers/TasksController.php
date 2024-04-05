@@ -22,9 +22,14 @@ class TasksController extends Controller
     public function save()
     {
         // Store data to the database
+        $validatedData = request()->validate([
+            'title' => 'required|max:255',
+            'description' => 'required|max: 1000',
+        ]);
+
         $task = Task::create([
-            'title' => request('title'),
-            'description' => request('description'),
+            'title' => $validatedData['title'],
+            'description' => $validatedData['description'],
             'user_id' => auth()->id()
         ]);
         return redirect()->route('tasks');
@@ -56,5 +61,28 @@ class TasksController extends Controller
         $task = Task::where('id', $id)->first();
         $task->delete();
         return redirect()->route('tasks');
+    }
+
+    public function view($id)
+    {
+        // Fetch the task from the database
+        $task = Task::where('id', $id)->first();
+        return view('tasks.view', compact('task'));
+    }
+
+    public function edit($id)
+    {
+        // Edit the task from the database        
+        $validatedData = request()->validate([
+             'title' => 'required|max:255',
+             'description' => 'required|max: 1000',
+         ]);
+
+         $task = Task::where('id', $id)->first();
+         $task->title = $validatedData['title'];
+         $task->description = $validatedData['description'];
+         $task->save();
+        //return dd($task);
+         return redirect()->route('tasks');
     }
 }

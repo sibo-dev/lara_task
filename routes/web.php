@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TasksController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Task;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('tasks/{id}', [TasksController::class, 'complete'])->name('tasks.complete');
     Route::patch('tasks/{id}/reopen', [TasksController::class, 'reopen'])->name('tasks.reopen');
     Route::delete('tasks/{id}', [TasksController::class, 'delete'])->name('tasks.delete');
+    Route::get('tasks/{id}', function ($id) {
+        $task = Task::where('id', $id)->first();
+        return view('tasks.view', compact('task'));
+    })->name('tasks.view');
+    Route::patch('tasks/{id}/edit', function ($id) {
+        $task = Task::where('id', $id)->first();
+        return view('tasks.edit', compact('task'));
+    })->name('tasks.edit');
 });
 
 require __DIR__.'/auth.php';
