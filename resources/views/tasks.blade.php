@@ -33,7 +33,7 @@
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $task->description }}</p>
                 <form action="{{ route('tasks.complete', $task->id) }}" method="POST">
                     @csrf
-                    @method('PATCH')
+                    @method('patch')
                     <input type="hidden" name="completed" value="1">
                     <button input="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
                         {{ __("Complete") }}
@@ -69,7 +69,7 @@
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $task->description }}</p>
                 <form action="{{ route('tasks.reopen', $task->id) }}" method="POST">
                     @csrf
-                    @method('PATCH')
+                    @method('patch')
                     <input type="hidden" name="completed" value="1">
                     <button input="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
                         {{ __("Reopen") }}

@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function () {
         $task = Task::where('id', $id)->first();
         return view('tasks.view', compact('task'));
     })->name('tasks.view');
-    Route::patch('tasks/{id}/edit', function ($id) {
+    Route::put('tasks/{id}/edit', function ($id) {
         $task = Task::where('id', $id)->first();
         return view('tasks.edit', compact('task'));
     })->name('tasks.edit');
