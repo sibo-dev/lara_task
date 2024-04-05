@@ -18,7 +18,7 @@
         </div>
         <form action="{{ route('tasks.edit', $task->id) }}" method="POST">
                     @csrf
-                    @method('PATCH')
+                    @method('put')
                     <input type="hidden" name="completed" value="1">
                     <button input="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
                         {{ __("Edit") }}
