@@ -20,7 +20,7 @@
     <div class="flex flex-col items-center justify-center">
         <form action="{{ route('tasks.edit', $task->id) }}" method="POST">
             @csrf
-            @method('patch')
+            @method('put')
             <div class="form-group">
                 <label for="title">Title</label>
                 <br>
