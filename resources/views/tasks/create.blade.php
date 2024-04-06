@@ -30,19 +30,19 @@
             <br>
             <textarea name="description" id="description" class="form-control"></textarea>
         </div>
-        <div>
+        <div class="flex justify-between">
+            <div>
             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
-                {{ __("Create Task")}}
+                {{ __("Create Task") }}
             </button>
-        </form>
-        </div>
-        <br>
-        <div>
+            </div>
+            <div class="ml-2">
             <a href="{{ route('tasks') }}">
                 <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                    {{ __("Cancel")}}
+                {{ __("Cancel") }}
                 </button>
             </a>
+            </div>
         </div>
     </div>
 </x-app-layout>
