@@ -32,18 +32,16 @@
                 <br>
                 <textarea name="description" id="description" class="form-control" placeholder="{{ $task->description }}"></textarea>
             </div>
-            <div>
+            <div class="flex gap-2">
                 <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
                     {{ __("Update Task")}}
                 </button>
+                <a href="{{ route('tasks.view', $task->id) }}">
+                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                        {{ __("Cancel")}}
+                    </button>
+                </a>
+            </div>
         </form>
-    </div>
-    <br>
-    <div>
-        <a href="{{ route('tasks.view', $task->id) }}">
-            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                {{ __("Cancel")}}
-            </button>
-        </a>
     </div>
 </x-app-layout>

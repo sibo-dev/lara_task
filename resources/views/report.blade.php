@@ -1,26 +1,19 @@
 <x-app-layout>
     <x-slot name="header">
+    <div class="flex justify-between items-center">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Report An Issue') }}
         </h2>
+        <div class="flex">
+                <a href="{{ route('tasks.create') }}">
+                    <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
+                        {{ __("Create Issue") }}
+                    </button>
+                </a>
+            </div>
+    </div>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("Open Issues") }}
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("Closed Issues") }}
-                </div>
-            </div>
-        </div>
-    </div>
+@include('report.report-open')
+@include('report.report-close')
 </x-app-layout>

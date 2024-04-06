@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TasksController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Task;
+use App\Http\Controllers\IssueController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,10 +31,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('report', function () {
-        return view('report');
-    })->name('report');
-
     /*
     Define the routes for the Tasks and the TasksController
     */
@@ -52,6 +50,13 @@ Route::middleware('auth')->group(function () {
         $task = Task::where('id', $id)->first();
         return view('tasks.edit', compact('task'));
     })->name('tasks.edit');
+
+
+    /*
+    Define the routes for the Issues and the IssuesController
+    */
+    Route::get('report', [IssueController::class, 'issues'])->name('report');
+    
 });
 
 require __DIR__.'/auth.php';

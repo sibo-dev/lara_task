@@ -3,6 +3,7 @@
 use App\Http\Controllers\IssueController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IssueController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+Route::get('/issues', IssueController::class, 'index')->name('index');
 
 Route::get('/issues', IssueController::class, 'issues')->name('issues');
 
