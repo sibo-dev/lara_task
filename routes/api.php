@@ -14,10 +14,6 @@ use App\Http\Controllers\IssueController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::get('/issues', IssueController::class, 'index')->name('index');
-
-Route::get('/issues', IssueController::class, 'issues')->name('issues');
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

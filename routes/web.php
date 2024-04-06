@@ -55,7 +55,7 @@ Route::middleware('auth')->group(function () {
     /*
     Define the routes for the Issues and the IssuesController
     */
-    Route::get('report', [IssueController::class, 'issues'])->name('report');
+    Route::get('report', [IssueController::class, 'index'])->name('report');
     
 });
 
