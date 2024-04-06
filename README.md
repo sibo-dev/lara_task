@@ -4,8 +4,6 @@
 
 This is a simple to-do app built with Laravel. It allows users to create, view, edit, and delete tasks. The app also has a feature that allows users to mark tasks as complete. Users are also required to sign in to access the app.
 
-
-
 ## Design Objectives
 
 ### To Do List Application
