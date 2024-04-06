@@ -21,12 +21,14 @@
                     <div class="p-6">
                         <h3 class="text-lg font-semibold mb-4">Open Tasks</h3>
                         <p>Display a list of open tasks here.</p>
+                        <p>Another option is to list a count of closed Tasks</p>
                     </div>
                 </div>
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6">
                         <h3 class="text-lg font-semibold mb-4">Closed Tasks</h3>
                         <p>Display a list of closed tasks here.</p>
+                        <p>Another option is to list a count of closed Tasks</p>
                     </div>
                 </div>
             </div>
