@@ -9,9 +9,17 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             @foreach ($issues as $issue)
-            @if ($issue['closed_at'] == null)
+            @if ($issue['state'] == 'open')
             <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-100">{{ $issue['title'] }}</h2>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ __("Date Created: ") }}{{ $issue['created_at'] }}</p>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ __("Assignee: ") }}{{ $issue['assignee'] }}</p>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                    <a href="{{ $issue['url'] }}" target="_blank" class="text-blue-500 hover:underline">{{ $issue['url'] }}</a>
+                </p>
+                <a href="{{ $issue['url'] }}" target="_blank">{{ $issue['url'] }}</a>
+                </p>
+                <hr class="my-2">
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $issue['body'] }}</p>
                 <div class="flex">
                     <form action="" method="POST">
