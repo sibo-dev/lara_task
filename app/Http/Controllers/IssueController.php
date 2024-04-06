@@ -12,20 +12,7 @@ class IssueController extends Controller
      */
     public function __invoke(Request $request)
     {
-        //
-        // $request = Http::get('https://api.github.com/repos/sibo-dev/lara_task/issues');
-        // $issues = $request->json();
-        // // Save the issues to an array and return it
-        // $issueData = [];
-        // foreach ($issues as $issue) {
-        //     $issueData[] = [
-        //         'number' => $issue['number'],
-        //         'title' => $issue['title'],
-        //         'body' => $issue['body'],
-        //         'closed_at' => $issue['closed_at'],
-        //     ];
-        // }
-        // return($issueData);
+        
     }
 
     public function issues(){
