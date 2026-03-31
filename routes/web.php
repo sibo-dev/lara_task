@@ -57,6 +57,19 @@ Route::middleware('auth')->group(function () {
     */
     Route::get('report', [IssueController::class, 'index'])->name('report');
     
+    
+});
+
+use Illuminate\Support\Facades\Artisan;
+
+Route::get('/debug-setup', function() {
+    // Clear all the junk
+    Artisan::call('config:clear');
+    Artisan::call('cache:clear');
+    Artisan::call('view:clear');
+    Artisan::call('route:clear');
+    
+    return "Laravel Cache Cleared! Check your site now.";
 });
 
 require __DIR__.'/auth.php';
